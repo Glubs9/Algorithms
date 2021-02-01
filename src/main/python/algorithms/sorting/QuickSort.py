@@ -67,6 +67,16 @@ class QuickSort():
     ar[i] = ar[j]
     ar[j] = tmp
 
+#smaller quicksort definition based on the classic haskell implementation
+#note: this is quite slow due to list concatenation, but this looks the nicest,
+#the time efficiency could be improved by using pythons list.extend method.
+def smallsort(arr):
+  if len(arr) <= 1: return arr
+  else:
+    head = arr[0]
+    smaller = list(filter(lambda n: n <= head, arr[1:]))
+    larger = list(filter(lambda n: n > head, arr[1:]))
+    return smallsort(smaller) + [head] + smallsort(larger)
 
 if __name__ == '__main__':
   """
